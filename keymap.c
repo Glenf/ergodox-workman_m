@@ -2,8 +2,6 @@
 // #include "debug.h"s
 #include "action_layer.h"
 #include "version.h"
-// #include "keymap_german.h"
-// #include "keymap_nordic.h"
 #include "keymap_swedish.h"
 
 enum custom_keycodes {
@@ -27,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *
    * (LEFT)
    * ,--------------------------------------------------.
-   * |   `    |   !  |   @  |   #  |   4  |   5  | Meh spc|
+   * |   `    |   !  |   @  |   #  |   $  |   %  | Meh spc|
    * |--------+------+------+------+------+-------------|
    * | Esc    |   Q  |   D  |   R  |   W  |   B  | TT(4)|
    * |--------+------+------+------+------+------|      |
@@ -45,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * (RIGHT)
    *
    *                 ,--------------------------------------------------.
-   *                 |      |   6  |   7  |   8  |   9  |   0  |   -    |
+   *                 |      |   ^  |   &  |   *  |   (  |   )  |   -    |
    *                 |------+------+------+------+------+------+--------|
    *                 | TT(3)|   J  |   F  |   U  |   P  |   ;  |   =    |
    *                 |      |------+------+------+------+------+--------|
@@ -66,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // (LEFT)
     KC_GRAVE,   KC_EXLM,  KC_AT,  KC_HASH,  KC_DLR,   KC_PERC,  MEH(KC_SPC),
     KC_ESC,     KC_Q,     KC_D,   KC_R,     KC_W,     KC_B,     TT(4),
-    KC_TAB,     KC_A,     KC_S,   KC_H,     KC_T,     KC_Q,
+    KC_TAB,     KC_A,     KC_S,   KC_H,     KC_T,     KC_G,
     KC_LSHIFT,  KC_Z,     KC_X,   KC_M,     KC_C,     KC_V,     LGUI(KC_SPC),
     KC_LCTRL,   KC_NO,    KC_NO,  KC_LALT,  KC_LGUI,
 
@@ -156,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+------|      |
    * |        |      |      |  [   |  ]   |      |      |
    * `--------+------+------+------+------+-------------' ,-------------.
-   *   |      |      |      |      |      |               |      |      |
+   *   |      |      |      |  <   |  >   |               |      |      |
    *   `----------------------------------'        ,------|------|------|
    *                                               |      |      |      |
    *                                               |      |      |------|
@@ -188,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LCBR,      KC_RCBR,      KC_TRNS,  KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LPRN,      KC_RPRN,      KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LBRACKET,  KC_RBRACKET,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,      KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LT,        KC_GT,
                                                                                   KC_TRNS,  KC_TRNS,
                                                                                             KC_TRNS,
                                                                         KC_TRNS,  KC_TRNS,  KC_TRNS,
@@ -204,9 +202,120 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
-  [NUMPAD] = LAYOUT_ergodox(KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_EQUAL,KC_KP_SLASH,KC_KP_ASTERISK,KC_TRNS,KC_TRNS,KC_TRNS,KC_KP_7,KC_KP_8,KC_KP_9,KC_KP_MINUS,KC_TRNS,KC_TRNS,KC_4,KC_KP_5,KC_KP_6,KC_KP_PLUS,KC_TRNS,KC_TRNS,KC_TRNS,KC_KP_1,KC_KP_2,KC_KP_3,KC_KP_ENTER,KC_TRNS,KC_KP_COMMA,KC_0,KC_KP_DOT,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS),
+ /* NUMPAD 3: Numpad
+   *
+   * (LEFT)
+   * ,--------------------------------------------------.
+   * |        |      |      |      |      |      |      |
+   * |--------+------+------+------+------+-------------|
+   * |        |      |      |      |      |      |      |
+   * |--------+------+------+------+------+------|      |
+   * |        |      |      |      |      |      |------|
+   * |--------+------+------+------+------+------|      |
+   * |        |      |      |      |      |      |      |
+   * `--------+------+------+------+------+-------------' ,-------------.
+   *   |      |      |      |      |      |               |      |      |
+   *   `----------------------------------'        ,------|------|------|
+   *                                               |      |      |      |
+   *                                               |      |      |------|
+   *                                               |      |      |      |
+   *                                               `--------------------'
+   *
+   * (RIGHT)
+   *
+   *                 ,--------------------------------------------------.
+   *                 |      |      |      |  =   |  /   |  *   |        |
+   *                 |------+------+------+------+------+------+--------|
+   *                 |      |      |  7   |  8   |  9   |  -   |        |
+   *                 |      |------+------+------+------+------+--------|
+   *                 |------|      |  4   |  5   |  6   |  +   |        |
+   *                 |      |------+------+------+------+------+--------|
+   *                 |      |      |  1   |  2   |  3   | Enter|        |
+   * ,-------------. `-------------+------+------+------+------+--------'
+   * |      |      |               |  ,   |  0   |  .   |      |      |
+   * |------+------+------.        `----------------------------------'
+   * |      |      |      |
+   * |------|      |      |
+   * |      |      |      |
+   * `--------------------'
+   *
+   */
+  [NUMPAD] = LAYOUT_ergodox(
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,
+                                                                          KC_TRNS,  KC_TRNS,
+                                                                                    KC_TRNS,
+                                                                KC_TRNS,  KC_TRNS,  KC_TRNS,
 
-  [MOUSE] = LAYOUT_ergodox(KC_TRNS,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,KC_TRNS,KC_F15,KC_TRNS,KC_MS_BTN1,KC_MS_UP,KC_MS_BTN2,KC_TRNS,KC_TRNS,KC_F14,KC_TRNS,KC_MS_LEFT,KC_MS_DOWN,KC_MS_RIGHT,KC_TRNS,KC_TRNS,KC_TRNS,KC_CUT,KC_COPY,KC_PASTE,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_F6,KC_F7,KC_F8,KC_F9,KC_F10,KC_F11,KC_TRNS,KC_TRNS,KC_TRNS,KC_MS_WH_UP,KC_TRNS,KC_TRNS,KC_F12,KC_TRNS,KC_MS_WH_LEFT,KC_MS_WH_DOWN,KC_MS_WH_RIGHT,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_MS_ACCEL0,KC_MS_ACCEL1,KC_MS_ACCEL2,KC_TRNS,KC_TRNS,KC_AUDIO_MUTE,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS),
+                        KC_TRNS,  KC_TRNS,  KC_TRNS,      KC_EQUAL, KC_KP_SLASH,  KC_KP_ASTERISK, KC_TRNS,
+                        KC_TRNS,  KC_TRNS,  KC_KP_7,      KC_KP_8,  KC_KP_9,      KC_KP_MINUS,    KC_TRNS,
+                                  KC_TRNS,  KC_KP_4,      KC_KP_5,  KC_KP_6,      KC_KP_PLUS,     KC_TRNS,
+                        KC_TRNS,  KC_TRNS,  KC_KP_1,      KC_KP_2,  KC_KP_3,      KC_KP_ENTER,    KC_TRNS,
+                                            KC_KP_COMMA,  KC_KP_0,  KC_KP_DOT,    KC_TRNS,        KC_TRNS,
+    KC_TRNS,  KC_TRNS,
+    KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS
+  ),
+
+/* MOUSE 4: Mouse and media
+   *
+   * (LEFT)
+   * ,--------------------------------------------------.
+   * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |
+   * |--------+------+------+------+------+-------------|
+   * | Bright |      | LClck| MUp  | RClck|      |      |
+   * |--------+------+------+------+------+------|      |
+   * |  Dim   |      | MRght| MDwn | MLft |      |------|
+   * |--------+------+------+------+------+------|      |
+   * |        |      | Cut  | Copy | Paste|      |      |
+   * `--------+------+------+------+------+-------------' ,-------------.
+   *   |      |      |      |      |      |               |      |      |
+   *   `----------------------------------'        ,------|------|------|
+   *                                               |      |      |      |
+   *                                               |      |      |------|
+   *                                               |      |      |      |
+   *                                               `--------------------'
+   *
+   * (RIGHT)
+   *
+   *                 ,--------------------------------------------------.
+   *                 |      |  F6  |  F7  |  F8  |  F9  | F10  |  F11   |
+   *                 |------+------+------+------+------+------+--------|
+   *                 |      |      |      | WUp  |      |      |  F12   |
+   *                 |      |------+------+------+------+------+--------|
+   *                 |------|      | WLft | WDwn | WRght|      |        |
+   *                 |      |------+------+------+------+------+--------|
+   *                 |      |      | Acc0 | Acc1 | Acc2 |      |        |
+   * ,-------------. `-------------+------+------+------+------+--------'
+   * |      |      |               | Mute | Vol- | Vol+ |      |      |
+   * |------+------+------.        `----------------------------------'
+   * |      |      |      |
+   * |------|      |      |
+   * |      |      |      |
+   * `--------------------'
+   *
+   */
+  [MOUSE] = LAYOUT_ergodox(
+    KC_TRNS,  KC_F1,    KC_F2,      KC_F3,      KC_F4,        KC_F5,    KC_TRNS,
+    KC_F15,   KC_TRNS,  KC_MS_BTN1, KC_MS_UP,   KC_MS_BTN2,   KC_TRNS,  KC_TRNS,
+    KC_F14,   KC_TRNS,  KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_CUT,     KC_COPY,    KC_PASTE,     KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,    KC_TRNS,    KC_TRNS,
+                                                              KC_TRNS,  KC_TRNS,
+                                                                        KC_TRNS,
+                                                    KC_TRNS,  KC_TRNS,  KC_TRNS,
+
+                        KC_TRNS,  KC_F6,    KC_F7,          KC_F8,              KC_F9,            KC_F10,   KC_F11,
+                        KC_TRNS,  KC_TRNS,  KC_TRNS,        KC_MS_WH_UP,        KC_TRNS,          KC_TRNS,  KC_F12,
+                                  KC_TRNS,  KC_MS_WH_LEFT,  KC_MS_WH_DOWN,      KC_MS_WH_RIGHT,   KC_TRNS,  KC_TRNS,
+                        KC_TRNS,  KC_TRNS,  KC_MS_ACCEL0,   KC_MS_ACCEL1,       KC_MS_ACCEL2,     KC_TRNS,  KC_TRNS,
+                                            KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,  KC_TRNS,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,
+    KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS),
 
   /* NORDIC 5: Nordic, maps ÅÄÖ to right hand. Needs OS support
    *
