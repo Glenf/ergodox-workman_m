@@ -12,16 +12,16 @@ enum custom_keycodes {
 };
 
 // Define layer names
-#define WORKMAN 0 // default layer
+#define QWERTY 0 // default QWERTY P layout
 #define SHIFTED 1 // shifted layer
 #define CODE 2 // code
 #define NUMPAD 3 // numpad
 #define MOUSE 4 // mouse
-#define NORDIC 5 //nordic mappings
-
+// #define NORDIC 5 //nordic mappings
+#define WORKMAN 5 // Workman layer
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  /* WRKM 0: Workman (Need update)
+/* WORKMAN: Workman (Need update)
    *
    * (LEFT)
    * ,--------------------------------------------------.
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TT(2),    KC_SPC,     KC_ENTER
   ),
 
-  /* SHFT 1: Shifted layer
+/* SHIFTED: Shifted layer
    *
    * (LEFT)
    * ,--------------------------------------------------.
@@ -142,19 +142,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,  KC_TRNS
 
   ),
-  /* CODE 2: Code
+/* CODE 2: Code
    *
    * (LEFT)
    * ,--------------------------------------------------.
    * |        |      |      |      |      |      |      |
    * |--------+------+------+------+------+-------------|
-   * |        |      |      |  {   |  }   |      |      |
+   * |        |  !   |  @   |  {   |  }   |  |   |      |
    * |--------+------+------+------+------+------|      |
-   * |        |      |      |  (   |  )   |      |------|
+   * |        |  #   |  $   |  (   |  )   |  `   |------|
    * |--------+------+------+------+------+------|      |
-   * |        |      |      |  [   |  ]   |      |      |
+   * |        |  %   |  ^   |  [   |  ]   |  ~   |      |
    * `--------+------+------+------+------+-------------' ,-------------.
-   *   |      |      |      |  <   |  >   |               |      |      |
+   *   |      |      |      |      |      |               |      |      |
    *   `----------------------------------'        ,------|------|------|
    *                                               |      |      |      |
    *                                               |      |      |------|
@@ -180,13 +180,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------'
    *
    */
-
   [CODE] = LAYOUT_ergodox(
     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,      KC_TRNS,      KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LCBR,      KC_RCBR,      KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LPRN,      KC_RPRN,      KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LBRACKET,  KC_RBRACKET,  KC_TRNS,  KC_TRNS,
-    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LT,        KC_GT,
+    KC_TRNS,  KC_EXLM,  KC_AT,    KC_LCBR,      KC_RCBR,      KC_PIPE,  KC_TRNS,
+    KC_TRNS,  KC_HASH,  KC_DLR,   KC_LPRN,      KC_RPRN,      KC_GRAVE,
+    KC_TRNS,  KC_PERC,  KC_CIRC,  KC_LBRACKET,  KC_RBRACKET,  KC_TILD,  KC_TRNS,
+    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,      KC_TRNS,
                                                                                   KC_TRNS,  KC_TRNS,
                                                                                             KC_TRNS,
                                                                         KC_TRNS,  KC_TRNS,  KC_TRNS,
@@ -202,7 +201,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
- /* NUMPAD 3: Numpad
+/* NUMPAD: Numpad
    *
    * (LEFT)
    * ,--------------------------------------------------.
@@ -260,7 +259,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
 
-/* MOUSE 4: Mouse and media
+/* MOUSE: Mouse and media
    *
    * (LEFT)
    * ,--------------------------------------------------.
@@ -317,7 +316,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS),
 
-  /* NORDIC 5: Nordic, maps ÅÄÖ to right hand. Needs OS support
+/* NORDIC: Nordic, maps ÅÄÖ to right hand. Needs OS support
    *
    * (LEFT)
    * ,--------------------------------------------------.
@@ -376,6 +375,69 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,
     KC_TRNS,  KC_TRNS,  KC_TRNS
   ),
+
+/* QWERTY: Default QWERTY with symbols
+   *
+   * (LEFT)
+   * ,--------------------------------------------------.
+   * |   `    |   !  |   @  |   #  |   $  |   %  | Meh spc|
+   * |--------+------+------+------+------+-------------|
+   * | Esc    |   Q  |   W  |   E  |   R  |   T  | TT(4)|
+   * |--------+------+------+------+------+------|      |
+   * | Tab    |   A  |   S  |   D  |   F  |   G  |------|
+   * |--------+------+------+------+------+------|      |
+   * | LShift |   Z  |   X  |   C  |   V  |   B  |      |
+   * `--------+------+------+------+------+-------------' ,-------------.
+   *   | CTRL |      |      |  OPT |  CMD |               | Home | End  |
+   *   `----------------------------------'        ,------|------|------|
+   *                                               |      |      |      |
+   *                                               |Bckspc| Space|------|
+   *                                               |      |      | TT(1)|
+   *                                               `--------------------'
+   *
+   * (RIGHT)
+   *
+   *                 ,--------------------------------------------------.
+   *                 |      |   ^  |   &  |   *  |   (  |   )  |   -    |
+   *                 |------+------+------+------+------+------+--------|
+   *                 | TT(3)|   Y  |   U  |   I  |   O  |   P  |   \    |
+   *                 |      |------+------+------+------+------+--------|
+   *                 |------|   H  |   J  |   K  |   L  |   ;  |   '    |
+   *                 | Meh  |------+------+------+------+------+--------|
+   *                 |      |   N  |   M  |   ,  |   .  |   /  | RShift |
+   * ,-------------. `-------------+------+------+------+------+--------'
+   * | PgUp | PgDn |               | ◀︎ CMD| ▲ OPT|   ▼  |   ▶  | TT(5)|
+   * |------+------+------.        `----------------------------------'
+   * |      |      |      |
+   * |------|Space |Enter |
+   * | TT(2)|      |      |
+   * `--------------------'
+   *
+   */
+
+  [QWERTY] = LAYOUT_ergodox(
+    // (LEFT)
+    KC_GRAVE,   KC_EXLM,  KC_AT,  KC_HASH,  KC_DLR,   KC_PERC,  MEH(KC_SPC),
+    KC_ESC,     KC_Q,     KC_W,   KC_R,     KC_T,     KC_Y,     TT(4),
+    KC_TAB,     KC_A,     KC_S,   KC_D,     KC_F,     KC_G,
+    KC_LSHIFT,  KC_Z,     KC_X,   KC_C,     KC_V,     KC_B,     LGUI(KC_SPC),
+    KC_LCTRL,   KC_NO,    KC_NO,  KC_LALT,  KC_LGUI,
+
+                                                                          KC_HOME,  KC_END,
+                                                                                    KC_NO,
+                                                                KC_BSPC,  KC_SPC,   TT(1),
+    // (RIGHT)
+                          KC_NO,    KC_CIRC,  KC_AMPR,         KC_ASTR,          KC_LPRN,  KC_RPRN,    KC_MINS,
+                          TT(3),    KC_Y,     KC_U,            KC_I,             KC_O,     KC_P,       KC_BSLASH,
+                                    KC_H,     KC_J,            KC_K,             KC_L,     KC_SCOLON,  KC_QUOTE,
+                          KC_NO,    KC_N,     KC_M,            KC_COMMA,         KC_DOT,   KC_SLASH,   KC_RSHIFT,
+                                              GUI_T(KC_LEFT),  RALT_T(KC_DOWN),  KC_UP,    KC_RIGHT,   TT(5),
+    KC_PGUP,  KC_PGDOWN,
+    KC_NO,
+    TT(2),    KC_SPC,     KC_ENTER
+  ),
+
+
 };
 
 const uint16_t PROGMEM fn_actions[] = {
