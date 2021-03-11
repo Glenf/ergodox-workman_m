@@ -6,3 +6,4 @@
 // #define NO_DEBUG
 // #define NO_PRINT
 // #define NO_ACTION_TAPPING
+#define TAPPING_TERM 200
