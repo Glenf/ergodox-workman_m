@@ -13,8 +13,9 @@ enum custom_keycodes {
 // Define layer names
 #define WORKMAN 0 // Workman layer
 #define NAV 1 // Navigation
-#define CODE 2 // Code
-#define MEDIA 3 // Media
+#define MEDIA 2 // Media
+#define NUM 3
+#define CODE 4
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* WORKMAN: Workman (Work in progress Man)
@@ -23,17 +24,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.
      * |   `    |   1  |   2  |   3  |   4  |   5  | Meh spc|
      * |--------+------+------+------+------+-------------|
-     * | Tab    |   Q  |   D  |   R  |   W  |   B  |      |
+     * |        |   Q  |   D  |   R  |   W  |   B  |      |
      * |--------+------+------+------+------+------|      |
-     * | Esc    |   A  |   S  |   H  |   T  |   G  |------|
+     * |        |   A  |   S  |   H  |   T  |   G  |------|
      * |--------+------+------+------+------+------|CMD spc|
-     * | LShift |   Z  |   X  |   M  |   C  |   V  |      |
+     * |        |   Z  |   X  |   M  |   C  |   V  |      |
      * `--------+------+------+------+------+-------------' ,-------------.
      *   |      |      |      |      |  LT(3, Esc) |        | Home | End  |
      *   `----------------------------------'        ,------|------|------|
      *                                               |      |      |      |
      *                                               | LT(1,|  Tab |------|
-     *                                               |  Spc)|      | LT(3, Esc)|
+     *                                               |  Spc)|      |      |
      *                                               `--------------------'
      *
      * (RIGHT)
@@ -57,36 +58,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [WORKMAN] = LAYOUT_ergodox(
         // (LEFT)
-        KC_GRAVE,   KC_1,           KC_2,           KC_3,           KC_4,           KC_5,   MEH(KC_SPC),
-        KC_TAB,     KC_Q,           KC_D,           KC_R,           KC_W,           KC_B,   KC_NO,
-        KC_ESC,     LCTL_T(KC_A),   LOPT_T(KC_S),   LCMD_T(KC_H),   LSFT_T(KC_T),   KC_G,
+        KC_NO,   KC_1,           KC_2,           KC_3,           KC_4,           KC_5,   MEH(KC_SPC),
+        KC_NO,     KC_Q,           KC_D,           KC_R,           KC_W,           KC_B,   KC_NO,
+        KC_NO,     LCTL_T(KC_A),   LOPT_T(KC_S),   LCMD_T(KC_H),   LSFT_T(KC_T),   KC_G,
         KC_NO,      KC_Z,           KC_X,           KC_M,           KC_C,           KC_V,   LGUI(KC_SPC),
-        KC_NO,      KC_NO,          KC_NO,          KC_NO,          LT(3, KC_ESC),
-                                                                                        KC_HOME,    KC_END,
+        KC_NO,      KC_NO,          KC_NO,          KC_NO,          LT(2, KC_ESC),
+                                                                                        KC_NO,    KC_NO,
                                                                                                     KC_NO,
-                                                                        LT(1, KC_SPC),  KC_TAB,     LT(3, KC_ESC),
+                                                                        LT(1, KC_SPC),  KC_TAB,     KC_NO,
         // (RIGHT)
-                    KC_NO,  KC_6,   KC_7,           KC_8,           KC_9,           KC_0,           KC_MINS,
-                    KC_NO,  KC_J,   KC_F,           KC_U,           KC_P,           KC_SCOLON,      KC_EQUAL,
-                            KC_Y,   RSFT_T(KC_N),   RCMD_T(KC_E),   ROPT_T(KC_O),   RCTL_T(KC_I),   KC_QUOTE,
-                    KC_NO,  KC_K,   KC_L,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_MINS,
-                                    KC_DEL,         KC_NO,          KC_NO,          KC_NO,          KC_BSLASH,
-        KC_PGUP,    KC_PGDOWN,
+                    KC_NO,  KC_6,   KC_7,           KC_8,           KC_9,           KC_0,           KC_NO,
+                    KC_NO,  KC_J,   KC_F,           KC_U,           KC_P,           KC_QUOTE,      KC_NO,
+                            KC_Y,   RSFT_T(KC_N),   RCMD_T(KC_E),   ROPT_T(KC_O),   RCTL_T(KC_I),   KC_NO,
+                    KC_NO,  KC_K,   KC_L,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_NO,
+                                    KC_DEL,         KC_NO,          KC_NO,          KC_NO,          KC_NO,
+        KC_NO,    KC_NO,
         KC_NO,
-        KC_NO,      KC_ENTER,       LT(2, KC_BSPC)
+        KC_NO,      LT(3, KC_ENT),       LT(4, KC_BSPC)
     ),
 
-    /* CODE 2: Code
+    /* Nav: Navigation layer
      *
      * (LEFT)
      * ,--------------------------------------------------.
      * |        |      |      |      |      |      |      |
      * |--------+------+------+------+------+-------------|
-     * |        |  !   |  @   |  {   |  }   |  |   |      |
+     * |        |      |      |      |      |      |      |
      * |--------+------+------+------+------+------|      |
-     * |        |  #   |  $   |  (   |  )   |  `   |------|
+     * |        |      |      |      |      |      |------|
      * |--------+------+------+------+------+------|      |
-     * |        |  %   |  ^   |  [   |  ]   |  ~   |      |
+     * |        |      |      |      |      |      |      |
      * `--------+------+------+------+------+-------------' ,-------------.
      *   |      |      |      |      |      |               |      |      |
      *   `----------------------------------'        ,------|------|------|
@@ -98,41 +99,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * (RIGHT)
      *
      *                 ,--------------------------------------------------.
-     *                 |      |      |      |  =   |  /   |  *   |        |
+     *                 |      |      |      |      |      |      |        |
      *                 |------+------+------+------+------+------+--------|
-     *                 |      |      |  7   |  8   |  9   |  -   |        |
+     *                 |      | Redo |  Cut | Copy | Paste| Undo |        |
      *                 |      |------+------+------+------+------+--------|
-     *                 |------|      |  4   |  5   |  6   |  +   |        |
+     *                 |------| LEFT | DOWN |  UP  | RIGHT| PWH  |        |
      *                 |      |------+------+------+------+------+--------|
-     *                 |      |      |  1   |  2   |  3   | Enter|        |
+     *                 |      | Home | PGUp | PgDn |  End |      |        |
      * ,-------------. `-------------+------+------+------+------+--------'
-     * |      |      |               |  ,   |  0   |  .   |      |      |
+     * |      |      |               | Del  |      |      |      |      |
      * |------+------+------.        `----------------------------------'
      * |      |      |      |
-     * |------|      |      |
+     * |------| Enter| Bspc |
      * |      |      |      |
      * `--------------------'
      *
      */
-    [CODE] = LAYOUT_ergodox(
-        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,        KC_TRNS,    KC_TRNS,
-        KC_TRNS,    KC_EXLM,    KC_AT,      KC_LCBR,        KC_RCBR,        KC_PIPE,    KC_TRNS,
-        KC_TRNS,    KC_HASH,    KC_DLR,     KC_LPRN,        KC_RPRN,        KC_GRAVE,
-        KC_TRNS,    KC_PERC,    KC_CIRC,    KC_LBRACKET,    KC_RBRACKET,    KC_TILD,    KC_TRNS,
-        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,
-                                                                            KC_TRNS,    KC_TRNS,
-                                                                                        KC_TRNS,
-                                                                KC_TRNS,    KC_TRNS,    KC_TRNS,
+    [NAV] = LAYOUT_ergodox(
+        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+        KC_NO,  RESET,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+        KC_NO,  U_TR,   U_TR,   U_TR,   U_TR,   KC_NO,
+        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
+                                                KC_NO,  KC_NO,
+                                                        KC_NO,
+                                        KC_NO,  KC_NO,  KC_NO,
 
-
-                    KC_TRNS,    KC_TRNS,    KC_TRNS,      KC_EQUAL, KC_KP_SLASH,    KC_KP_ASTERISK,     KC_TRNS,
-                    KC_TRNS,    KC_TRNS,    KC_KP_7,      KC_KP_8,  KC_KP_9,        KC_KP_MINUS,        KC_TRNS,
-                                KC_TRNS,    KC_KP_4,      KC_KP_5,  KC_KP_6,        KC_KP_PLUS,         KC_TRNS,
-                    KC_TRNS,    KC_TRNS,    KC_KP_1,      KC_KP_2,  KC_KP_3,        KC_KP_ENTER,        KC_TRNS,
-                                            KC_KP_COMMA,  KC_KP_0,  KC_KP_DOT,      KC_TRNS,            KC_TRNS,
-        KC_TRNS,    KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,    KC_TRNS,    KC_TRNS
+        KC_NO,  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,  KC_NO,
+        KC_NO,  U_RDO,      U_CUT,      U_CPY,      U_PST,      U_UND,  KC_NO,
+                KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    U_PWH,  KC_NO,
+        KC_NO,  KC_HOME,    KC_PGDOWN,  KC_PGUP,    KC_END,     KC_NO,  KC_NO,
+                            KC_DEL,     KC_NO,      KC_NO,      KC_NO,  KC_NO,
+        KC_NO,  KC_NO,
+        KC_NO,
+        KC_NO,  KC_ENTER,  KC_BSPC
     ),
 
     /* MEDIA: Media keys
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS,    KC_MSTP,    KC_MPLY
     ),
 
-    /* Nav: Navigation layer
+    /* NUM: Numeric
      *
      * (LEFT)
      * ,--------------------------------------------------.
@@ -217,38 +217,99 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                 ,--------------------------------------------------.
      *                 |      |      |      |      |      |      |        |
      *                 |------+------+------+------+------+------+--------|
-     *                 |      | Redo |  Cut | Copy | Paste| Undo |        |
+     *                 |      |      |  7   |  8   |  9   |  -   |        |
      *                 |      |------+------+------+------+------+--------|
-     *                 |------| LEFT | DOWN |  UP  | RIGHT| PWH  |        |
+     *                 |------|      |  4   |  5   |  6   |  +   |        |
      *                 |      |------+------+------+------+------+--------|
-     *                 |      | Home | PGUp | PgDn |  End |      |        |
+     *                 |      |      |  1   |  2   |  3   | Enter|        |
      * ,-------------. `-------------+------+------+------+------+--------'
-     * |      |      |               | Del  |      |      |      |      |
+     * |      |      |               |  0   |      |  .   |      |      |
      * |------+------+------.        `----------------------------------'
      * |      |      |      |
-     * |------| Enter| Bspc |
+     * |------|      |      |
      * |      |      |      |
      * `--------------------'
      *
      */
-    [NAV] = LAYOUT_ergodox(
-        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-        KC_NO,  U_TR,   U_TR,   U_TR,   U_TR,   KC_NO,
-        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-        KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,
-                                                KC_NO,  KC_NO,
-                                                        KC_NO,
-                                        KC_NO,  KC_NO,  KC_NO,
+    [NUM] = LAYOUT_ergodox(
+        KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,        KC_NO,    KC_NO,
+        KC_NO,    KC_LBRC,    KC_7,    KC_8,    KC_9,        KC_RBRC,    KC_NO,
+        KC_NO,    KC_SCLN,    KC_4,    KC_5,    KC_6,        KC_EQL,
+        KC_NO,    KC_GRV,    KC_1,    KC_2,    KC_3,        KC_NUBS,    KC_NO,
+        KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_DOT,
+                                                                            KC_NO,    KC_NO,
+                                                                                        KC_NO,
+                                                                KC_0,    KC_MINUS,    KC_NO,
 
-        KC_NO,  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,  KC_NO,
-        KC_NO,  U_RDO,      U_CUT,      U_CPY,      U_PST,      U_UND,  KC_NO,
-                KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    U_PWH,  KC_NO,
-        KC_NO,  KC_HOME,    KC_PGDOWN,  KC_PGUP,    KC_END,     KC_NO,  KC_NO,
-                            KC_DEL,     KC_NO,      KC_NO,      KC_NO,  KC_NO,
-        KC_NO,  KC_NO,
+
+                    KC_NO,    KC_NO,    KC_NO,      KC_NO,  KC_NO,        KC_NO,     KC_NO,
+                    KC_NO,    KC_NO,    KC_NO,      KC_NO,  KC_NO,        RESET,        KC_NO,
+                                KC_NO,    U_TR,      U_TR,  U_TR,        U_TR,         KC_NO,
+                    KC_NO,    KC_NO,    KC_NO,      KC_NO,  KC_NO,        KC_NO,        KC_NO,
+                                            KC_TRNS,      KC_NO,  KC_NO,        KC_NO,            KC_NO,
+        KC_NO,    KC_NO,
         KC_NO,
-        KC_NO,  KC_ENTER,  KC_BSPC
+        KC_NO,    KC_TRNS,    KC_TRNS
+    ),
+
+
+    /* SYMBOLS: Code
+     *
+     * (LEFT)
+     * ,--------------------------------------------------.
+     * |        |      |      |      |      |      |      |
+     * |--------+------+------+------+------+-------------|
+     * |        |  !   |  @   |  {   |  }   |  |   |      |
+     * |--------+------+------+------+------+------|      |
+     * |        |  #   |  $   |  (   |  )   |  `   |------|
+     * |--------+------+------+------+------+------|      |
+     * |        |  %   |  ^   |  [   |  ]   |  ~   |      |
+     * `--------+------+------+------+------+-------------' ,-------------.
+     *   |      |      |      |      |      |               |      |      |
+     *   `----------------------------------'        ,------|------|------|
+     *                                               |      |      |      |
+     *                                               |      |      |------|
+     *                                               |      |      |      |
+     *                                               `--------------------'
+     *
+     * (RIGHT)
+     *
+     *                 ,--------------------------------------------------.
+     *                 |      |      |      |      |      |      |        |
+     *                 |------+------+------+------+------+------+--------|
+     *                 |      |      |      |      |      |      |        |
+     *                 |      |------+------+------+------+------+--------|
+     *                 |------|      |      |      |      |      |        |
+     *                 |      |------+------+------+------+------+--------|
+     *                 |      |      |      |      |      |      |        |
+     * ,-------------. `-------------+------+------+------+------+--------'
+     * |      |      |               |      |      |  .   |      |      |
+     * |------+------+------.        `----------------------------------'
+     * |      |      |      |
+     * |------|      |      |
+     * |      |      |      |
+     * `--------------------'
+     *
+     */
+    [CODE] = LAYOUT_ergodox(
+        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,        KC_TRNS,    KC_TRNS,
+        KC_TRNS,    LSFT(KC_LBRC),    LSFT(KC_7),      LSFT(KC_8),        LSFT(KC_7),        LSFT(KC_RBRC),    KC_TRNS,
+        KC_TRNS,    KC_COLN,    LSFT(KC_4),     LSFT(KC_5),        LSFT(KC_6),        KC_PLUS,
+        KC_TRNS,    KC_TILDE,    LSFT(KC_1),    LSFT(KC_2),    KC_NUHS,    LSFT(KC_NUBS),    KC_TRNS,
+        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        LSA(KC_2),
+                                                                            KC_TRNS,    KC_TRNS,
+                                                                                        KC_TRNS,
+                                                                LSFT(KC_0),    LSFT(KC_MINS),    KC_TRNS,
+
+
+                    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+                    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    RESET,    KC_TRNS,
+                                KC_NO,    U_TR,    U_TR,    U_TR,    U_TR,    KC_TRNS,
+                    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+                                            KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+        KC_TRNS,    KC_TRNS,
+        KC_TRNS,
+        KC_TRNS,    KC_TRNS,    KC_TRNS
     ),
 
 };

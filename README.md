@@ -1,4 +1,4 @@
-# Workman layout for ErgoDox EZ
+# Workman layout for ErgoDox EZ (Miryoku flavour)
 
 This layout moves toward [miryoku](https://github.com/manna-harbour/miryoku) more and more.
 
@@ -12,5 +12,8 @@ Navigation has special mapping for my Alfred.app on I (shift + command + v) as p
 
 0. Workman
 1. Navigation
-2. Code + numpad
-3. Media
+2. Media
+3. Numpad
+4. Code
+
+
